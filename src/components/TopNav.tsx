@@ -13,12 +13,7 @@ import {
   Palette,
 } from 'lucide-react';
 
-interface TopNavProps {
-  onOpenJavaModal: () => void;
-  onOpenUmlModal: () => void;
-}
-
-export const TopNav: React.FC<TopNavProps> = ({ onOpenJavaModal, onOpenUmlModal }) => {
+export const TopNav: React.FC = () => {
   const { currentUser, switchUser, allUsers, resetToDemoData, setActiveNavTab, activeNavTab, backgroundTheme, setBackgroundTheme } = useApp();
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const [showThemeDropdown, setShowThemeDropdown] = useState(false);

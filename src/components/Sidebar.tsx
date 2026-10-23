@@ -82,9 +82,9 @@ export const Sidebar: React.FC = () => {
       roles: ['ADMIN'],
     },
     {
-      id: 'java-syllabus',
-      label: 'Java OOP Architecture',
-      icon: <BookOpen className="w-4 h-4" />,
+      id: 'subjects-catalog',
+      label: 'All Subjects & Courses',
+      icon: <BookOpen className="w-4 h-4 text-indigo-500" />,
       roles: ['ADMIN', 'FACULTY', 'STUDENT'],
     },
   ];

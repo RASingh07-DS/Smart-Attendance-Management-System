@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { AppProvider, useApp } from './context/AppContext';
 import { TopNav } from './components/TopNav';
 import { Sidebar } from './components/Sidebar';
@@ -10,9 +10,7 @@ import { AttendanceHistoryView } from './components/AttendanceHistoryView';
 import { CorrectionRequestsView } from './components/CorrectionRequestsView';
 import { ReportsView } from './components/ReportsView';
 import { AdminManagementView } from './components/AdminManagementView';
-import { JavaSyllabusExplorer } from './components/JavaSyllabusExplorer';
-import { UmlDiagramModal } from './components/UmlDiagramModal';
-import { JavaProjectDownloadModal } from './components/JavaProjectDownloadModal';
+import { SubjectsCatalogView } from './components/SubjectsCatalogView';
 import {
   LayoutDashboard,
   CheckSquare,
@@ -25,8 +23,6 @@ import {
 
 const AppContent: React.FC = () => {
   const { activeNavTab, setActiveNavTab, currentUser, backgroundTheme } = useApp();
-  const [showUmlModal, setShowUmlModal] = useState(false);
-  const [showJavaModal, setShowJavaModal] = useState(false);
 
   const isTeacher = currentUser.role === 'FACULTY';
   const isStudent = currentUser.role === 'STUDENT';
@@ -41,10 +37,7 @@ const AppContent: React.FC = () => {
       </div>
 
       {/* Top Navigation */}
-      <TopNav
-        onOpenJavaModal={() => setShowJavaModal(true)}
-        onOpenUmlModal={() => setShowUmlModal(true)}
-      />
+      <TopNav />
 
       {/* Main Workspace Frame */}
       <div className="flex-1 flex max-w-7xl w-full mx-auto pb-16 md:pb-6">
@@ -62,12 +55,7 @@ const AppContent: React.FC = () => {
           {activeNavTab === 'reports' && <ReportsView />}
           {activeNavTab === 'admin-management' && <AdminManagementView />}
           {activeNavTab === 'settings' && <AdminManagementView />}
-          {activeNavTab === 'java-syllabus' && (
-            <JavaSyllabusExplorer
-              onOpenUmlModal={() => setShowUmlModal(true)}
-              onOpenJavaModal={() => setShowJavaModal(true)}
-            />
-          )}
+          {activeNavTab === 'subjects-catalog' && <SubjectsCatalogView />}
         </main>
       </div>
 
@@ -158,27 +146,15 @@ const AppContent: React.FC = () => {
         </button>
 
         <button
-          onClick={() => setActiveNavTab('java-syllabus')}
+          onClick={() => setActiveNavTab('subjects-catalog')}
           className={`flex flex-col items-center gap-0.5 p-1 ${
-            activeNavTab === 'java-syllabus' ? 'text-slate-900 font-bold' : 'text-slate-500'
+            activeNavTab === 'subjects-catalog' ? 'text-slate-900 font-bold' : 'text-slate-500'
           }`}
         >
           <BookOpen className="w-4 h-4" />
-          <span>Java OOP</span>
+          <span>Courses</span>
         </button>
       </div>
-
-      {/* UML Diagrams Modal */}
-      <UmlDiagramModal
-        isOpen={showUmlModal}
-        onClose={() => setShowUmlModal(false)}
-      />
-
-      {/* Java Project Source Modal */}
-      <JavaProjectDownloadModal
-        isOpen={showJavaModal}
-        onClose={() => setShowJavaModal(false)}
-      />
     </div>
   );
 };
