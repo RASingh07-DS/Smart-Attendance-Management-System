@@ -1,0 +1,6 @@
+{
+  "name": "SmartAttend — Smart Attendance Management System",
+  "description": "Comprehensive college attendance management system featuring role-based dashboards for Administrators, Faculty, and Students, smart threshold calculations, predictive insights, session marking, correction approvals, and reports with CSV export.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
